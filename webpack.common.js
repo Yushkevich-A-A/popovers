@@ -65,13 +65,5 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: "src/license.txt",
-          to: "[name][ext]",
-        },
-      ],
-    }),
   ],
 };
