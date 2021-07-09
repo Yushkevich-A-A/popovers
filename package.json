@@ -1,0 +1,9 @@
+{
+  "name": "popovers",
+  "version": "1.0.0",
+  "description": "popovers",
+  "main": "index.js",
+  "repository": "https://github.com/Yushkevich-A-A/popovers.git",
+  "author": "Yushkevich-A-A <Mortifer1993@yandex.ru>",
+  "license": "MIT"
+}
