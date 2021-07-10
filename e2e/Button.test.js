@@ -1,4 +1,4 @@
-import puppeteer  from "puppeteer";
+import puppeteer from 'puppeteer';
 import { fork } from 'child_process';
 
 jest.setTimeout(90000);
@@ -9,7 +9,7 @@ describe('creating button, click button and appearence of a hint', () => {
   let server = null;
   const baseURL = 'http://localhost:8888';
 
-  beforeAll( async () => {
+  beforeAll(async () => {
     server = fork(`${__dirname}/e2e.server.js`);
     await new Promise((resolve, reject) => {
       server.on('error', reject);
@@ -29,7 +29,7 @@ describe('creating button, click button and appearence of a hint', () => {
     page = await browser.newPage();
   });
 
-  afterAll( async () => {
+  afterAll(async () => {
     await browser.close();
     server.kill();
   });
@@ -55,5 +55,5 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.waitForTimeout(1000);
 
     expect(await page.$('.hint-paragraph')).toBeNull();
-  })
-})
+  });
+});

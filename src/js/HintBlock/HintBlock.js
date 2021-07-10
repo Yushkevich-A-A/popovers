@@ -1,4 +1,3 @@
-
 import './HintBlock.css';
 
 export default class HintBlock {
@@ -16,7 +15,7 @@ export default class HintBlock {
     const hintTitle = document.createElement('h1');
     hintTitle.classList.add('hint-title');
     hintTitle.textContent = this.title;
-    this.hint.appendChild(hintTitle)
+    this.hint.appendChild(hintTitle);
 
     const hintParagraph = document.createElement('p');
     hintParagraph.classList.add('hint-paragraph');

@@ -1,4 +1,4 @@
-import './Button.css'
+import './Button.css';
 
 export default class Button {
   constructor(parentElement, hint) {
@@ -22,7 +22,7 @@ export default class Button {
   }
 
   addListeners() {
-    document.addEventListener('click', event => {
+    document.addEventListener('click', (event) => {
       event.preventDefault();
       if (event.target.closest('.button')) {
         console.log(1);
@@ -30,7 +30,7 @@ export default class Button {
       } else {
         this.RemovingHint();
       }
-    })
+    });
   }
 
   addingHint() {
