@@ -51,8 +51,9 @@ describe('creating button, click button and appearence of a hint', () => {
     await page.waitForSelector('.button');
     page.click('.button');
     await page.waitForSelector('.hint-paragraph');
-    await page.mouse.click(100, 100);
+    await page.click('body');
     await page.waitForTimeout(1000);
-    await page.evaluate(() => document.querySelector('.hint-paragraph') === null);
+
+    expect(await page.$('.hint-paragraph')).toBeNull();
   })
 })
