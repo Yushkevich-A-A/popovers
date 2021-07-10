@@ -1,13 +1,13 @@
 import puppeteer  from "puppeteer";
 import { fork } from 'child_process';
 
-jest.setTimeout(303000);
+jest.setTimeout(90000);
 
 describe('creating button, click button and appearence of a hint', () => {
   let browser = null;
   let page = null;
   let server = null;
-  const baseURL = 'http://localhost:9000';
+  const baseURL = 'http://localhost:8888';
 
   beforeAll( async () => {
     server = fork(`${__dirname}/e2e.server.js`);
@@ -26,7 +26,7 @@ describe('creating button, click button and appearence of a hint', () => {
       // devTools: true,
     });
 
-    page = await browser.newPage()
+    page = await browser.newPage();
   });
 
   afterAll( async () => {
@@ -34,17 +34,25 @@ describe('creating button, click button and appearence of a hint', () => {
     server.kill();
   });
 
-  // test('creating button', async () => {
-  //   // await page.goto(baseURL);
-  //   // await page.waitForSelector('button');
-  // });
-  test('should add do something', async () => {
-    await page.goto(baseUrl);
+  test('creating button', async () => {
+    await page.goto(baseURL);
+    await page.waitForSelector('.button');
   });
 
-  // test('click button and appearence of a hint', async () => {
-  //   await page.goto(baseURL);
-  //   const button = page.$('')
+  test('click button and appearence of a hint', async () => {
+    await page.goto(baseURL);
+    await page.waitForSelector('.button');
+    page.click('.button');
+    await page.waitForSelector('.hint-paragraph');
+  });
 
-  // })
+  test('delete block hint', async () => {
+    await page.goto(baseURL);
+    await page.waitForSelector('.button');
+    page.click('.button');
+    await page.waitForSelector('.hint-paragraph');
+    await page.mouse.click(100, 100);
+    await page.waitForTimeout(1000);
+    await page.evaluate(() => document.querySelector('.hint-paragraph') === null);
+  })
 })
